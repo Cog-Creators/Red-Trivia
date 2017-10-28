@@ -3,6 +3,8 @@ from typing import List
 
 from yaml import load, YAMLError
 
+__all__ = ['list_names', 'load_list']
+
 _list_names = None
 _loaded_lists = {}
 
