@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import List
 
-from yaml import load
+from yaml import load, YAMLError
 
 _list_names = None
 _loaded_lists = {}
@@ -50,7 +50,12 @@ def _load_list(list_name):
         _loaded_lists[list_name] = load(_list_names[list_name].open('r'))
     except (KeyError, FileNotFoundError) as e:
         raise FileNotFoundError(
-            "There is no list with the name '{}'.".format(list_name)) from e
+            "There is no list with the name '{}'.".format(list_name)
+        ) from e
+    except YAMLError as e:
+        raise IOError(
+            "The list '{}' has malformed data.".format(list_name)
+        ) from e
 
 
 def load_list(list_name: str) -> dict:
@@ -65,6 +70,15 @@ def load_list(list_name: str) -> dict:
     Returns
     -------
     dict
+
+    Raises
+    ------
+    FileNotFoundError
+        If the list name doesn't exist or the list file can't be
+        found.
+
+    IOError
+        If the list can't be loaded.
     """
     if _list_names is None:
         _load_list_names()
