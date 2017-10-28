@@ -8,5 +8,6 @@ setup(
     packages=['redbot.trivia'],
     license='GPLv3',
     author='Cog-Creators',
-    description='A collection of trivia lists curated by Red-DiscordBot developers'
+    description='A collection of trivia lists curated by Red-DiscordBot developers',
+    include_package_data=True
 )
