@@ -1,0 +1,26 @@
+import redbot.trivia
+import yaml
+
+
+def test_trivia_lists():
+    problem_lists = []
+    list_names = redbot.trivia.lists()
+    for l in list_names:
+        with l.open() as f:
+            try:
+                dict_ = yaml.load(f)
+            except yaml.error.YAMLError as e:
+                problem_lists.append((l.stem, "The list failed to load"))
+            else:
+                for key in list(dict_.keys()):
+                    if key == "CONFIG":
+                        if not isinstance(dict_[key], dict):
+                            problem_lists.append((l.stem, "CONFIG is not a dict"))
+                    else:
+                        if not isinstance(dict_[key], list):
+                            problem_lists.append((l.stem, "The answers for '{}' are not a list".format(key)))
+    if problem_lists:
+        msg = ""
+        for l in problem_lists:
+            msg += "{}: {}\n".format(l[0], l[1])
+        raise TypeError("The following lists contain errors:\n{}".format(msg))
