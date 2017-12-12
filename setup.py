@@ -10,7 +10,7 @@ def get_lists():
 
 setup(
     name='Red-Trivia',
-    version='1.0.0',
+    version='1.0.1',
     namespace_packages=['redbot'],
     packages=['redbot.trivia'],
     package_data={'redbot.trivia': get_lists()},
