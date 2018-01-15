@@ -16,6 +16,9 @@ def test_trivia_lists():
                     if key == "CONFIG":
                         if not isinstance(dict_[key], dict):
                             problem_lists.append((l.stem, "CONFIG is not a dict"))
+                    elif key == "AUTHOR":
+                        if not isinstance(dict_[key], str):
+                            problem_lists.append((l.stem, "AUTHOR is not a string"))
                     else:
                         if not isinstance(dict_[key], list):
                             problem_lists.append((l.stem, "The answers for '{}' are not a list".format(key)))
