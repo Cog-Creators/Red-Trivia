@@ -10,7 +10,7 @@ def test_trivia_lists():
             try:
                 dict_ = yaml.load(f)
             except yaml.error.YAMLError as e:
-                problem_lists.append((l.stem, "The list failed to load"))
+                problem_lists.append((l.stem, "YAML error:\n{!s}".format(e)))
             else:
                 for key in list(dict_.keys()):
                     if key == "CONFIG":
