@@ -1,15 +1,23 @@
 dist: trusty
 language: python
 python:
-  - "3.5.3"
-  - "3.6.1"
+- 3.5.3
+- 3.6.1
 install:
-  - echo "pytest>3" >> requirements.txt
-  - echo "pyyaml" >> requirements.txt
-  - pip install -r requirements.txt
-  - pip install -e .
+- echo "pytest>3" >> requirements.txt
+- echo "pyyaml" >> requirements.txt
+- pip install -r requirements.txt
+- pip install .
 script:
-  - python -m pytest
+- python -m pytest
+deploy:
+  provider: pypi
+  user: Red-DiscordBot
+  password:
+    secure: AXHFOKOzMuGka3vyq7CrG/n/UXaudJOxhxa6lCzuZRiFMJtQq8V4QHZwuEGtUHlMwRKTzf7pO0Xwp1+DyuO6jBZybeFU8k1nRauRXSTiSG5dd458gW4vPckr5WZp2LXOHOQk4OARbOdGIZ8uPSlrSY+3Q82vJi5vtAnxpSQFlqvIPTI01tILCKR6Vx9u5aMkEbdmlhNuIH5ZXj0sia42R1CqeLuKDI8gc2ASZHI26m7Kn0jfyic+n68hXxNk1fgPwU8g256p0NKIID0iML9lgE1Wbg5LpVHs29zRAhOP1mGaFPW00kOdtCFSqrrilFgxr/sw0q+d9Y29sElrpxoJZVVE6RVS+I6UVfFXexNgM/Xy/9nj9SKrjbKV4T/12hwpGGIwsnP/bfq7oGpNwcxVWQKTqQxb5w82hu/EJn3m3rN+jfP/nHArVlSoTnTqcW7U5RdA/U7eX5LvKUAhesPDDqIA8GvbJs0dtkXfcWKbifxt5Kl7H5YbXu2aK+f/bp3GV5ErvXDczuMMMBaVFRgHuhRZU6ZtnyeLer9SzhlQ25ujXcQ0TmVoQ4hZgk1aglKzuW7iXMWM3jUTvAOoMDFy4++pXsjjgnkeYhz7j8jwvqol3TcKbZVXyEqTEGP98Uy5vsUGx6UA9wNFXNPY+wEt07GiFjGwAsLggglRud0SXAw=
+  on:
+    branch: master
+    python: 3.5.3
 cache: pip
 notifications:
   email: false
