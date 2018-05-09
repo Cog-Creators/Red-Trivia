@@ -1,10 +1,10 @@
-import redbot.trivia
+from redbot.ext import trivia
 import yaml
 
 
 def test_trivia_lists():
     problem_lists = []
-    list_names = redbot.trivia.lists()
+    list_names = trivia.lists()
     for l in list_names:
         with l.open() as f:
             try:
