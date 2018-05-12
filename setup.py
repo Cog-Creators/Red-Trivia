@@ -11,9 +11,9 @@ def get_lists():
 setup(
     name='Red-Trivia',
     version='1.0.2',
-    namespace_packages=['redbot'],
-    packages=['redbot.trivia'],
-    package_data={'redbot.trivia': get_lists()},
+    namespace_packages=['redbot.ext'],
+    packages=['redbot.ext.trivia'],
+    package_data={'redbot.ext.trivia': get_lists()},
     license='GPLv3',
     author='Cog-Creators',
     description='A collection of trivia lists curated by Red-DiscordBot developers'
