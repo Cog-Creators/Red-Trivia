@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 def get_lists():
-    base_dir = Path('redbot/trivia/lists')
+    base_dir = Path('redbot/ext/trivia/lists')
     parents = base_dir.parents
     return [str(p.relative_to(parents[0])) for p in base_dir.glob("*.yaml")]
 
