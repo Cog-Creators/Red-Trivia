@@ -3,14 +3,14 @@ from pathlib import Path
 
 
 def get_lists():
-    base_dir = Path('redbot/trivia/lists')
+    base_dir = Path('redbot/ext/trivia/lists')
     parents = base_dir.parents
     return [str(p.relative_to(parents[0])) for p in base_dir.glob("*.yaml")]
 
 
 setup(
     name='Red-Trivia',
-    version='1.1.0',
+    version='1.1.1',
     namespace_packages=['redbot.ext'],
     packages=['redbot.ext.trivia'],
     package_data={'redbot.ext.trivia': get_lists()},
